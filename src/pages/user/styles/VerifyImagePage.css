@@ -1,0 +1,141 @@
+.verify-image-container {
+  padding: 20px 30px;
+}
+
+.vi-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.vi-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* UPLOAD BOX */
+.vi-upload-box {
+  width: 420px;
+  height: 380px;
+  border: 2px dashed #c5c5c5;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafbff;
+  transition: 0.2s;
+}
+
+.vi-upload-box:hover {
+  background: #f1f4ff;
+}
+
+.vi-upload-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.vi-drag-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.vi-or {
+  display: block;
+  margin: 10px 0;
+  color: #999;
+}
+
+.vi-choose-btn {
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.vi-file-info {
+  font-size: 13px;
+  color: #999;
+}
+
+/* IMAGE PREVIEW */
+.vi-preview-img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.vi-remove-btn {
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE INFO */
+.vi-info {
+  flex: 1;
+}
+
+.vi-info-text {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.vi-tip-box {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  background: #f2f7ff;
+  border-radius: 8px;
+  border-left: 4px solid #2a66ff;
+}
+
+.vi-tip-icon {
+  font-size: 20px;
+}
+
+.vi-submit-btn {
+  margin-top: 30px;
+  width: 300px;
+  padding: 15px;
+  background: #2a66ff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.vi-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.vi-loading {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .vi-layout {
+    flex-direction: column;
+  }
+
+  .vi-upload-box {
+    width: 100%;
+  }
+}

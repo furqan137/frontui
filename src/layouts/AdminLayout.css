@@ -1,0 +1,32 @@
+/* Full admin layout wrapper */
+.admin-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* Main content area (right side) */
+.admin-main {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.admin-main.expanded {
+  margin-left: 72px;
+  width: calc(100% - 72px);
+}
+
+/* Page container inside main area */
+.admin-content {
+  padding: 25px 35px;
+  margin-top: 75px; /* equal to topbar height */
+}
+
+/* Smooth scrolling */
+.admin-content {
+  overflow-y: auto;
+}

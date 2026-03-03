@@ -1,0 +1,41 @@
+/* AuthOverlay.css */
+
+/* Full-screen backdrop that covers entire viewport and sits on top */
+.auth-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;              /* extremely high so it sits above landing */
+  background: rgba(6, 10, 22, 0.45); /* dark translucent backdrop */
+  backdrop-filter: blur(4px); /* subtle blur behind modal for depth */
+  -webkit-backdrop-filter: blur(4px);
+  padding: 28px;              /* spacing on small screens */
+}
+
+/* The modal card that contains your signup/login form */
+.auth-modal {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  background: #ffffff; /* keep forms white */
+  box-shadow: 0 20px 60px rgba(3, 15, 35, 0.45);
+  padding: 28px;
+  transform-origin: center;
+  animation: authModalIn 180ms ease-out;
+}
+
+/* subtle entry animation */
+@keyframes authModalIn {
+  from { transform: translateY(-8px) scale(0.995); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* optional: if your forms have internal .w-full max-w-md style, override small-screen spacing */
+.auth-modal .w-full { width: 100% !important; }
+
+/* small-screen adjustments */
+@media (max-width: 480px) {
+  .auth-modal { max-width: 92%; padding: 18px; border-radius: 10px; }
+}

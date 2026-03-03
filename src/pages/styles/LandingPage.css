@@ -1,0 +1,47 @@
+/* src/pages/styles/LandingPage.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Main gradient applied to the entire page via body class for reliability */
+body.landing-bg-active {
+  background: linear-gradient(180deg, #2564e2 0%, #3b82f6 40%, #5a3f93 100%) !important;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Make the top-level wrapper transparent (in case there's a default white panel) */
+.landing-page-wrapper {
+  background: transparent !important;
+}
+
+/* Make every section / card in the landing page transparent so the gradient shows through.
+   Increase specificity so it overrides other component styles. */
+body.landing-bg-active .landing-page-wrapper,
+body.landing-bg-active .landing-page-wrapper .hero,
+body.landing-bg-active .landing-page-wrapper section,
+body.landing-bg-active .landing-page-wrapper .container,
+body.landing-bg-active .landing-page-wrapper .card,
+body.landing-bg-active .landing-page-wrapper .panel,
+body.landing-bg-active .landing-page-wrapper .page-section {
+  background: transparent !important;
+  box-shadow: none !important; /* optional: remove heavy white shadows that hide gradient */
+}
+
+/* If you keep a card background (like hero card inner), use semi-transparent instead */
+body.landing-bg-active .hero-card {
+  background: rgba(3, 24, 63, 0.92) !important; /* slightly translucent so logo shows but card is readable */
+  box-shadow: 0 12px 30px rgba(2, 20, 48, 0.55) !important;
+}
+
+/* If a layout wrapper is absolutely covering page (very common), force pointer pass-through */
+body.landing-bg-active .covering-bg {
+  background: transparent !important;
+  pointer-events: none;
+}
+
+/* Keep nav unchanged; but if you want navbar transparent, target it here:
+body.landing-bg-active .navbar { background: transparent !important; }
+*/

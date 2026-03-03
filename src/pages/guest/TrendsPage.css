@@ -1,0 +1,106 @@
+.trends-container {
+  padding: 25px 40px;
+}
+
+.trends-title {
+  font-size: 34px;
+  margin-top: -30px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.trends-subtitle {
+  font-size: 17px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* GRID LAYOUT */
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.trends-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* TRENDING TOPICS */
+.trending-list {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.trend-box {
+  background: #fafafa;
+  width: 150px;
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.trend-box h3 {
+  font-size: 17px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.trend-icon {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+/* SEVERITY TAGS */
+.severity {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.high {
+  background: #ffe0dd;
+  color: #ff4c38;
+}
+
+.medium {
+  background: #fff2cc;
+  color: #cc8a00;
+}
+
+/* HOTSPOT MAP */
+.hotspot-map img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  opacity: 0.95;
+  border-radius: 12px;
+}
+
+/* TABLE */
+.trends-table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.trends-table th {
+  text-align: left;
+  padding: 10px 5px;
+  color: #444;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.trends-table td {
+  padding: 10px 5px;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 15px;
+}

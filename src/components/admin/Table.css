@@ -1,0 +1,82 @@
+.table-wrapper {
+  margin-top: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+}
+
+/* TABLE */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 14px;
+  color: #777;
+  padding-bottom: 10px;
+}
+
+.admin-table td {
+  padding: 12px 0;
+  border-bottom: 1px solid #ededed;
+  font-size: 15px;
+}
+
+/* STATUS BADGES */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+}
+
+.status-badge.active {
+  background: #28c76f;
+}
+
+.status-badge.suspended {
+  background: #ff9f43;
+}
+
+.status-badge.deactivated {
+  background: #ea5455;
+}
+
+/* ACTIONS */
+.table-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.table-actions img {
+  width: 22px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.table-actions img:hover {
+  opacity: 1;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pagination .page {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+
+.pagination .page.active {
+  background: #2a6dff;
+  color: white;
+}

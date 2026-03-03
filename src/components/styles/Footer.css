@@ -1,0 +1,73 @@
+/* ================================
+   FOOTER SECTION
+================================ */
+
+.footer {
+  width: 100%;
+  margin-top: -80px;
+  text-align: center;
+  padding: 80px 0 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(85, 30, 120, 0.7),
+    rgba(72, 26, 110, 0.88)
+  );
+}
+
+/* ICONS ROW */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 25px;
+}
+
+/* BOX AROUND ICONS */
+.footer-icon-box {
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.25s ease;
+}
+
+.footer-icon-box:hover {
+  border-color: #30eaff;
+  transform: scale(1.06);
+}
+
+/* ICON IMAGE */
+.footer-icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(1.1);
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgba(230, 230, 255, 0.75);
+  letter-spacing: 0.4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .footer-icons {
+    gap: 25px;
+  }
+
+  .footer-icon-box {
+    width: 46px;
+    height: 46px;
+  }
+
+  .footer-copy {
+    font-size: 14px;
+  }
+}

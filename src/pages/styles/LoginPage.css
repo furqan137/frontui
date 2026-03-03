@@ -1,0 +1,76 @@
+/* Full screen layout */
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dde7ff, #f5f8ff);
+}
+
+/* LEFT SIDE */
+.login-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 80px;
+  color: #1a1f36;
+}
+
+.login-left-logo {
+  width: 120px;
+  margin-bottom: 25px;
+}
+
+.login-left-title {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.login-left-text {
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 380px;
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  animation: fadeIn 0.7s ease;
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width: 940px) {
+  .login-wrapper {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .login-left {
+    align-items: center;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .login-right {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,83 @@
+/* ======================== TOPBAR ======================== */
+.guest-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  background: #0e63ff; /* AuthenChain Blue */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 42px;
+  z-index: 2000;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================== LEFT LOGO ======================== */
+.guest-top-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.guest-logo {
+  height: 44px;
+}
+
+.guest-brand {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ======================== CENTER LINKS ======================== */
+.guest-top-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.guest-top-links a {
+  font-size: 16px;
+  font-weight: 500;
+  color: #eef4ff;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding-bottom: 3px;
+}
+
+.guest-top-links a:hover {
+  color: #ffffff;
+  border-bottom: 2px solid white;
+}
+
+/* ======================== RIGHT LOGIN BTN ======================== */
+.guest-login-btn {
+  background: #ffffff;
+  color: #0b54db;
+  border: none;
+  padding: 9px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
+}
+
+.guest-login-btn:hover {
+  background: #e8eeff;
+  transform: translateY(-2px);
+}
+
+/* ========== RESPONSIVE ADJUSTMENT ========== */
+@media (max-width: 768px) {
+  .guest-top-links {
+    gap: 20px;
+  }
+  .guest-login-btn {
+    padding: 7px 18px;
+  }
+}

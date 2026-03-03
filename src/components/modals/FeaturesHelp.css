@@ -1,0 +1,106 @@
+/* ===== Features Items ===== */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(245, 245, 255, 0.85);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.feature-icon {
+  font-size: 34px;
+}
+
+.feature-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* ===== Help Items ===== */
+.help-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.help-item {
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(245, 248, 255, 0.9);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.help-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* ===== About Section ===== */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.about-box {
+  background: rgba(245, 248, 255, 0.9);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.about-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.about-box ul li {
+  margin-top: 4px;
+  color: #444;
+  font-size: 14px;
+}
+
+
+/* Header with close button */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #ff4f4f;
+  transform: scale(1.1);
+}

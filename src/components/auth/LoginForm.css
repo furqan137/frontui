@@ -1,0 +1,183 @@
+/* === Login Card (Smaller / Compact) === */
+.login-card {
+  background: white;
+  padding: 22px 26px; /* smaller */
+  border-radius: 12px;
+  width: 360px; /* fixed compact width */
+  max-width: 100%;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.08);
+  animation: slideUp 0.45s ease;
+}
+
+/* TITLES */
+.login-title {
+  font-size: 22px; /* smaller */
+  font-weight: 700;
+  color: #111;
+}
+
+.login-subtitle {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* FORM */
+.login-form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* reduced spacing */
+}
+
+/* INPUT WRAPPER */
+.login-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ICONS */
+.login-input-icon {
+  width: 18px;
+  left: 10px;
+  opacity: 0.65;
+  position: absolute;
+}
+
+/* PASSWORD TOGGLE BUTTON */
+.show-password-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+/* INPUT FIELD */
+.login-input {
+  width: 100%;
+  padding: 10px 38px; /* smaller */
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  background: #fafafa;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.login-input:focus {
+  border-color: #4c7dff;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(76,125,255,0.18);
+  outline: none;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 11px;
+  background: #4c7dff;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.login-btn:hover {
+  background: #3b6bff;
+}
+
+/* FORGOT PASSWORD */
+.forgot-wrapper {
+  margin-top: 4px;
+}
+
+.forgot-link {
+  color: #4c7dff;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* SEPARATOR */
+.separator {
+  text-align: center;
+  margin: 12px 0;
+  color: #888;
+  position: relative;
+  font-size: 13px;
+}
+
+.separator span {
+  background: white;
+  padding: 0 6px;
+}
+
+.separator:before,
+.separator:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 38%;
+  height: 1px;
+  background: #ccc;
+}
+
+.separator:before { left: 0; }
+.separator:after { right: 0; }
+
+/* SOCIAL BUTTONS */
+.social-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background: white;
+  transition: 0.2s;
+}
+
+.social-btn img {
+  width: 20px;
+}
+
+.social-btn:hover {
+  background: #f3f3f3;
+}
+
+.google-btn { margin-bottom: 8px; }
+
+/* FOOTER */
+.login-footer {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+  color: #555;
+}
+
+.login-link {
+  color: #4c7dff;
+  font-weight: 500;
+}
+
+/* ERROR MESSAGE */
+.login-error {
+  color: red;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+/* ANIMATIONS */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

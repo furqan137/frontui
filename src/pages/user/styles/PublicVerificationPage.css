@@ -1,0 +1,126 @@
+/* PAGE WRAPPER */
+.pv-page {
+  padding: 10px 35px 40px;   /* reduced top padding */
+  min-height: calc(100vh - 70px);  /* fills screen nicely */
+}
+
+/* PAGE TITLE */
+.pv-main-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: -50px ;
+  margin-top: -20px !important;    /* remove top gap */
+  margin-bottom: 15px;           /* tighter spacing */
+  text-align: left;
+}
+
+/* MAIN CARD */
+.pv-card {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;      /* center horizontally */
+  margin-top: 5px;     /* pull card upward */
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  border: 1px solid #e9edf5;
+}
+
+/* ICON */
+.pv-icon {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+/* INSIDE CARD TEXT */
+.pv-heading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pv-subtext {
+  text-align: center;
+  color: #666;
+  margin-bottom: 22px;
+  font-size: 15px;
+}
+
+/* INPUT FIELD */
+.pv-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cfd7e4;
+  font-size: 15.5px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+/* VERIFY BUTTON */
+.pv-btn {
+  width: 100%;
+  background: #1f6bff;
+  color: white;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.pv-btn:hover {
+  background: #1455d4;
+}
+
+/* SMALL TEXT BELOW BUTTON */
+.pv-example {
+  text-align: center;
+  margin: 12px 0 18px;
+  color: #444;
+  font-size: 14px;
+}
+
+.pv-example span {
+  color: #1f6bff;
+  cursor: pointer;
+}
+
+/* CAMERA BUTTON */
+.pv-camera-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f4f6fb;
+  border: 1px solid #d1d9e6;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pv-camera-btn:hover {
+  background: #e9ebf0;
+}
+
+/* BACK BUTTON — RIGHT SIDED */
+.pv-back-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;   /* reduced space */
+}
+
+.pv-back-btn {
+  padding: 12px 20px;
+  background: #f2f3f7;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pv-back-btn:hover {
+  background: #e6e7ec;
+}

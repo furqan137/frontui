@@ -1,0 +1,96 @@
+.analytics-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.analytics-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.analytics-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.filter-dropdown {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cdd6e4;
+}
+
+.analytics-filter {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #d5ddeb;
+  background: white;
+  cursor: pointer;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px #dfe7f5;
+}
+
+.pie-legend div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.pie-legend span {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+/* Heatmap style */
+.worldmap-wrapper {
+  width: 100%;
+  height: 260px;
+}
+
+.big-number {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.source-list li {
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.export-btn {
+  padding: 12px 20px;
+  background: #4C8DF5;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.export-btn:hover {
+  background: #3b7be0;
+}

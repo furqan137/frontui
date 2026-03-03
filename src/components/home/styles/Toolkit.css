@@ -1,0 +1,149 @@
+/* =======================================================
+   TOOLKIT SECTION — FULL FIGMA UI MATCH
+======================================================= */
+
+.toolkit-section {
+  width: 100%;
+  padding: 120px 0 140px;
+  margin-top: -60px;
+  background: linear-gradient(180deg, #2b3f96 0%, #6a2fbf 100%);
+  position: relative;
+  overflow: hidden;
+  color: #dbeaff;
+}
+
+/* ---------- GRID BACKGROUND ---------- */
+.toolkit-grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    );
+  background-size: 45px 45px;
+  pointer-events: none;
+}
+
+.toolkit-inner {
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* ---------- TOP LABEL ---------- */
+.toolkit-label {
+  color: #7bfaff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 0.8px;
+}
+
+/* ---------- MAIN TITLE ---------- */
+.toolkit-title {
+  font-size: 42px;
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 28px;
+}
+
+.toolkit-title .highlight {
+  color: #34f2c9;
+}
+
+/* =======================================================
+   TABS (Category Switch Area)
+======================================================= */
+
+.toolkit-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: #e9f2ff;
+  font-size: 20px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.tab:hover {
+  color: #6af7ff;
+}
+
+/* Fade animation */
+.fade {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Active tab underline */
+.tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 3px;
+  background: #37efff;
+  border-radius: 3px;
+}
+
+/* ---------- DESCRIPTION PARAGRAPH ---------- */
+
+.toolkit-description {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #e7efff;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 900px) {
+  .toolkit-title {
+    font-size: 30px;
+  }
+
+  .toolkit-tabs {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tab.active::after {
+    width: 110px;
+  }
+
+  .toolkit-description {
+    width: 90%;
+    font-size: 16px;
+  }
+}

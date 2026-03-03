@@ -1,0 +1,126 @@
+/* ================================
+   DIFFERENCE SECTION
+================================ */
+
+.difference-section {
+  padding: 120px 0;
+  margin-top: -80px;
+  position: relative;
+}
+
+.diff-label {
+  text-align: center;
+  color: #48f7ff;
+  font-size: 17px;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.diff-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 60px;
+}
+
+/* MAIN LAYOUT */
+.difference-layout {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+/* LEFT SIDE */
+.diff-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.diff-tab {
+  padding: 18px 22px;
+  font-size: 22px;
+  color: #e3efff;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.diff-tab:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.diff-tab.active {
+  border-left: 4px solid #3bfff3;
+  background: rgba(255, 255, 255, 0.05);
+  color: #eaffff;
+}
+
+/* RIGHT SIDE */
+.diff-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diff-content-box {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 12px;
+  padding: 40px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(67, 230, 255, 0.3);
+  box-shadow: 0 0 30px rgba(80, 230, 255, 0.15);
+  display: flex;
+  align-items: center;
+}
+
+.diff-text {
+  font-size: 17px;
+  color: #ffffff;
+  line-height: 1.7;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation */
+.fade {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .difference-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .diff-title {
+    font-size: 32px;
+  }
+
+  .diff-tab {
+    font-size: 18px;
+  }
+
+  .diff-content-box {
+    min-height: 260px;
+  }
+}

@@ -1,0 +1,227 @@
+/* ===========================================================
+   SIGNUP CARD — Compact & Perfectly Balanced
+   =========================================================== */
+.signup-card {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 12px;
+  width: 360px;               /* fixed compact width */
+  max-width: 100%;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+  animation: slideUp 0.45s ease;
+}
+
+/* Titles */
+.signup-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.signup-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #6c6c6c;
+}
+
+/* ===========================================================
+   FORM
+   =========================================================== */
+.signup-form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Standard Inputs */
+.signup-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  background: #fafafa;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.signup-input:focus {
+  border-color: #4c7dff;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(76, 125, 255, 0.15);
+  outline: none;
+}
+
+/* ===========================================================
+   ICON + PASSWORD TOGGLE
+   =========================================================== */
+/* Input wrapper for icon + input */
+.signup-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* The input inside the wrapper must have extra left padding */
+.signup-input-wrapper .signup-input {
+  padding-left: 40px !important;   /* FIXED — enough space for icon */
+}
+
+/* Icon positioning */
+.signup-input-icon {
+  width: 20px;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+/* Password toggle icon */
+.show-password-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 18px;
+}
+
+/* ===========================================================
+   CHECKBOX
+   =========================================================== */
+.signup-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.signup-checkbox input {
+  width: 14px;
+  height: 14px;
+}
+
+.signup-link {
+  color: #4c7dff;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* ===========================================================
+   REGISTER BUTTON
+   =========================================================== */
+.signup-btn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  border: none;
+  background: #4c7dff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background: #3b6bff;
+}
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+.signup-footer {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+}
+
+/* ===========================================================
+   ERROR MESSAGE
+   =========================================================== */
+.signup-error {
+  color: red;
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: left;
+}
+
+/* ===========================================================
+   SUCCESS SCREEN
+   =========================================================== */
+.signup-success-screen {
+  background: white;
+  padding: 32px 28px;
+  border-radius: 14px;
+  width: 360px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+  text-align: center;
+}
+
+.role-success {
+  font-size: 20px;
+  color: #3b6bff;
+  font-weight: 700;
+  margin: 8px 0 16px;
+}
+
+/* ===========================================================
+   ROLE SELECTOR — Compact + Icons
+   =========================================================== */
+.role-grid {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.role-card {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #e3e3e3;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.role-card:hover {
+  border-color: #4a90ff;
+}
+
+.role-active {
+  border-color: #3b82f6;
+  background: #e8f0ff;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+.role-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.role-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===========================================================
+   ANIMATIONS
+   =========================================================== */
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}

@@ -1,0 +1,36 @@
+.donut-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donut-ring {
+  fill: transparent;
+  stroke: #e6e6e6;
+}
+
+.donut-segment.real {
+  fill: transparent;
+  stroke: #2a52ff;
+  stroke-linecap: round;
+}
+
+.donut-legend {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.donut-legend p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.real-text {
+  color: #2a52ff;
+  font-weight: 600;
+}
+
+.fake-text {
+  color: #009688;
+  font-weight: 600;
+}

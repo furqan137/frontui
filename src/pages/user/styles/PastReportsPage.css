@@ -1,0 +1,115 @@
+.reports-container {
+  padding: 20px 35px;
+}
+
+.reports-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Filters Row */
+.reports-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Search box */
+.reports-search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #dcdcdc;
+  padding: 8px 12px;
+  border-radius: 10px;
+  width: 260px;
+}
+
+.reports-search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-icon {
+  margin-right: 6px;
+}
+
+/* Select Filters */
+.reports-select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Table */
+.reports-table {
+  margin-top: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+
+.reports-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reports-table th {
+  background: #f7f9ff;
+  padding: 14px;
+  font-size: 14px;
+  text-align: left;
+  color: #555;
+}
+
+.reports-table td {
+  padding: 14px;
+  font-size: 15px;
+  border-top: 1px solid #eee;
+}
+
+/* Status badges */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.progress {
+  background: #e2ebff;
+  color: #2768ff;
+}
+
+.status-badge.resolved {
+  background: #e7ffe7;
+  color: #2ab55f;
+}
+
+/* Buttons */
+.view-btn {
+  background: #1f6bff;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  opacity: 0.9;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}

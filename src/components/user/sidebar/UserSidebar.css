@@ -1,0 +1,91 @@
+/* SIDEBAR BASE */
+.user-sidebar {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  height: calc(100vh - 75px);
+
+  width: 240px;
+  background: linear-gradient(180deg, #2a52ff, #7b2cff);
+  padding: 25px 12px;
+
+  color: white;
+  overflow-y: auto;
+
+  transition: width 0.3s ease;
+}
+
+/* COLLAPSED SIDEBAR */
+.user-sidebar.collapsed {
+  width: 72px; /* only icons */
+}
+
+/* TOGGLE BUTTON */
+.sidebar-toggle {
+  width: 40px;
+  height: 40px;
+
+  background: rgba(255,255,255,0.25);
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.sidebar-toggle img {
+  width: 20px;
+}
+
+/* NAVIGATION */
+.user-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 14px;
+  color: #f2f2f2;
+  text-decoration: none;
+  border-radius: 10px;
+
+  font-size: 15px;
+  white-space: nowrap;
+
+  transition: 0.25s;
+}
+
+.user-sidebar-nav a img {
+  width: 22px;
+}
+
+/* COLLAPSED – hide text */
+.user-sidebar.collapsed a {
+  justify-content: center;
+}
+
+.user-sidebar.collapsed a span,
+.user-sidebar.collapsed a:not(:has(img)) {
+  display: none;
+}
+
+/* highlight */
+.user-sidebar-nav a:hover,
+.user-sidebar-nav a.active {
+  background: rgba(255,255,255,0.22);
+}

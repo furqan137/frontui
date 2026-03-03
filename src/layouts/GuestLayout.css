@@ -1,0 +1,29 @@
+/* Full layout */
+.guest-layout {
+  display: flex;
+  width: 100%;
+}
+
+/* Main content area */
+.guest-content {
+  margin-left: 230px;
+  padding: 40px;
+  padding-top: 110px;
+  width: 100%;
+  background: #fff;
+  min-height: 100vh;
+  transition: margin-left 0.25s ease;
+}
+
+
+
+/* When collapsed sidebar */
+.guest-content.collapsed {
+  margin-left: 80px;
+  transition: all 0.3s ease;
+}
+
+/* Override previous gradient */
+body {
+  background: #ffffff !important;
+}
