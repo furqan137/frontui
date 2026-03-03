@@ -15,8 +15,9 @@ interface AnalysisResult {
   explanation: Explanation[];
 }
 
-const FakeNewsDetector: React.FC = () => {
+const FakeNewsDetector = () => {
   const { currentUser } = useAuth();
+  
   const [text, setText] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,6 @@ const FakeNewsDetector: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [animateResult, setAnimateResult] = useState(false);
 
-  // Detect system dark mode preference
   useEffect(() => {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setDarkMode(prefersDark);
@@ -115,10 +115,10 @@ const FakeNewsDetector: React.FC = () => {
   return (
     <div className={`fake-news-detector ${darkMode ? "dark" : "light"}`}>
       <div className="detector-wrapper">
-        {/* Header Section */}
-        <div className="detector-header">
+        {/* Header */}
+        <header className="detector-header">
           <div className="header-content">
-            <div className="header-icon">
+            <div className="header-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 16v-4M12 8h.01" />
@@ -126,29 +126,27 @@ const FakeNewsDetector: React.FC = () => {
             </div>
             <div className="header-text">
               <h1>Fake News Detector</h1>
-              <p className="subtitle">
-                Advanced AI-powered analysis to detect misinformation
-              </p>
+              <p className="subtitle">Advanced AI-powered analysis to detect misinformation</p>
             </div>
             <button 
               className="theme-toggle"
               onClick={() => setDarkMode(!darkMode)}
-              title="Toggle dark mode"
+              aria-label={`Switch to ${darkMode ? "light" : "dark"} mode`}
             >
               {darkMode ? "☀️" : "🌙"}
             </button>
           </div>
-        </div>
+        </header>
 
         {/* Main Content */}
-        <div className="detector-container">
+        <main className="detector-container">
           {/* Input Section */}
-          <div className="input-section">
+          <section className="input-section">
             <div className="input-card">
-              <div className="input-header">
+              <header className="input-header">
                 <h2>Analyze Text</h2>
-                <span className="char-badge">{charCount}/5000</span>
-              </div>
+                <span className="char-badge" aria-live="polite">{charCount}/5000</span>
+              </header>
 
               <div className="textarea-wrapper">
                 <textarea
@@ -158,8 +156,9 @@ const FakeNewsDetector: React.FC = () => {
                   placeholder="Paste the news article or text you want to analyze here... (minimum 10 characters)"
                   disabled={loading}
                   maxLength={5000}
+                  aria-label="Text input for fake news detection"
                 />
-                <div className="textarea-accent"></div>
+                <div className="textarea-accent" aria-hidden="true"></div>
               </div>
 
               <div className="input-footer">
@@ -177,15 +176,16 @@ const FakeNewsDetector: React.FC = () => {
                     className="btn btn-analyze"
                     onClick={handleAnalyze}
                     disabled={loading || text.trim().length < 10}
+                    aria-busy={loading}
                   >
                     {loading ? (
                       <>
-                        <span className="spinner"></span>
+                        <span className="spinner" aria-hidden="true"></span>
                         <span>Analyzing...</span>
                       </>
                     ) : (
                       <>
-                        <span className="btn-icon">⚡</span>
+                        <span className="btn-icon" aria-hidden="true">⚡</span>
                         <span>Analyze Now</span>
                       </>
                     )}
@@ -194,8 +194,9 @@ const FakeNewsDetector: React.FC = () => {
                     className="btn btn-clear"
                     onClick={handleClear}
                     disabled={loading || !text}
+                    aria-label="Clear text and results"
                   >
-                    <span className="btn-icon">✕</span>
+                    <span className="btn-icon" aria-hidden="true">✕</span>
                     <span>Clear</span>
                   </button>
                 </div>
@@ -205,8 +206,8 @@ const FakeNewsDetector: React.FC = () => {
 
           {/* Error Alert */}
           {error && (
-            <div className="alert alert-error">
-              <div className="alert-icon">⚠️</div>
+            <div className="alert alert-error" role="alert">
+              <div className="alert-icon" aria-hidden="true">⚠️</div>
               <div className="alert-content">
                 <div className="alert-title">Analysis Error</div>
                 <div className="alert-message">{error}</div>
@@ -214,6 +215,7 @@ const FakeNewsDetector: React.FC = () => {
               <button
                 className="alert-close"
                 onClick={() => setError("")}
+                aria-label="Close error alert"
               >
                 ✕
               </button>
@@ -222,17 +224,17 @@ const FakeNewsDetector: React.FC = () => {
 
           {/* Results Section */}
           {result && (
-            <div className={`results-section ${animateResult ? "show" : ""}`}>
+            <section className={`results-section ${animateResult ? "show" : ""}`} aria-live="polite" aria-atomic="true">
               {/* Prediction Card */}
-              <div className={`prediction-card prediction-${result.prediction.toLowerCase()}`}>
-                <div className="card-header">
+              <article className={`prediction-card prediction-${result.prediction.toLowerCase()}`}>
+                <header className="card-header">
                   <h2>Analysis Result</h2>
-                </div>
+                </header>
 
                 <div className="prediction-content">
                   <div className="result-badge-container">
                     <div className={`result-badge badge-${result.prediction.toLowerCase()}`}>
-                      <span className="badge-icon">
+                      <span className="badge-icon" aria-hidden="true">
                         {result.prediction === "Fake" ? "🚨" : "✅"}
                       </span>
                       <div className="badge-text">
@@ -254,11 +256,13 @@ const FakeNewsDetector: React.FC = () => {
                         className="confidence-bar"
                         style={{
                           width: `${result.confidence}%`,
-                          background: getConfidenceGradient(
-                            parseFloat(result.confidence)
-                          ),
+                          background: getConfidenceGradient(parseFloat(result.confidence)),
                         }}
-                      ></div>
+                        role="progressbar"
+                        aria-valuenow={parseInt(result.confidence)}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
                     </div>
                     <div className="confidence-scale">
                       <span>Low</span>
@@ -280,15 +284,13 @@ const FakeNewsDetector: React.FC = () => {
 
               {/* Key Factors Card */}
               {topExplanations.length > 0 && (
-                <div className="factors-card">
-                  <div className="card-header">
+                <article className="factors-card">
+                  <header className="card-header">
                     <h2>Key Contributing Factors</h2>
                     <span className="factor-count">{topExplanations.length} factors</span>
-                  </div>
+                  </header>
 
-                  <p className="factors-description">
-                    Words and phrases that most influenced this prediction:
-                  </p>
+                  <p className="factors-description">Words and phrases that most influenced this prediction:</p>
 
                   <div className="factors-grid">
                     {topExplanations.map((exp, index) => (
@@ -313,13 +315,13 @@ const FakeNewsDetector: React.FC = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </article>
               )}
 
               {/* Analysis Stats */}
               <div className="stats-grid">
                 <div className="stat-card">
-                  <div className="stat-icon">📊</div>
+                  <div className="stat-icon" aria-hidden="true">📊</div>
                   <div className="stat-content">
                     <div className="stat-label">Text Length</div>
                     <div className="stat-value">{text.length} chars</div>
@@ -327,7 +329,7 @@ const FakeNewsDetector: React.FC = () => {
                 </div>
 
                 <div className="stat-card">
-                  <div className="stat-icon">🔍</div>
+                  <div className="stat-icon" aria-hidden="true">🔍</div>
                   <div className="stat-content">
                     <div className="stat-label">Factors Analyzed</div>
                     <div className="stat-value">{result.explanation.length}</div>
@@ -335,7 +337,7 @@ const FakeNewsDetector: React.FC = () => {
                 </div>
 
                 <div className="stat-card">
-                  <div className="stat-icon">⏱️</div>
+                  <div className="stat-icon" aria-hidden="true">⏱️</div>
                   <div className="stat-content">
                     <div className="stat-label">Analysis Speed</div>
                     <div className="stat-value">Real-time</div>
@@ -344,24 +346,24 @@ const FakeNewsDetector: React.FC = () => {
               </div>
 
               {/* Clear Results Button */}
-              <div className="results-footer">
+              <footer className="results-footer">
                 <button className="btn btn-new-analysis" onClick={handleClear}>
-                  <span className="btn-icon">🔄</span>
+                  <span className="btn-icon" aria-hidden="true">🔄</span>
                   <span>Analyze Another Text</span>
                 </button>
-              </div>
-            </div>
+              </footer>
+            </section>
           )}
 
           {/* Empty State */}
           {!result && !loading && text.trim().length === 0 && (
             <div className="empty-state">
-              <div className="empty-icon">🔎</div>
+              <div className="empty-icon" aria-hidden="true">🔎</div>
               <h3>Ready to Analyze</h3>
               <p>Paste your text above and click "Analyze Now" to get started</p>
             </div>
           )}
-        </div>
+        </main>
       </div>
     </div>
   );

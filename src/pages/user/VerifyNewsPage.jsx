@@ -38,7 +38,6 @@ const extractKeywords = (text) => {
 };
 
 export default function VerifyNewsPage() {
-  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
 
   // UI State
@@ -148,27 +147,31 @@ export default function VerifyNewsPage() {
 
   return (
     <div className="verify-container">
-
-      {/* PAGE TITLE */}
-      <h1 className="verify-title">Submit News for Verification</h1>
-      <p className="verify-subtitle">
-        Submit articles, claims, or links to verify authenticity.
-      </p>
+      {/* PAGE HEADER */}
+      <header className="verify-header">
+        <h1 className="verify-title">Submit News for Verification</h1>
+        <p className="verify-subtitle">Submit articles, claims, or links to verify authenticity.</p>
+      </header>
 
       <div className="verify-card">
-        
         {/* TABS */}
-        <div className="verify-tabs">
+        <div className="verify-tabs" role="tablist">
           <button
-            className={activeTab === "text" ? "active" : ""}
+            className={`verify-tab ${activeTab === "text" ? "active" : ""}`}
             onClick={() => setActiveTab("text")}
+            role="tab"
+            aria-selected={activeTab === "text"}
+            aria-controls="text-panel"
           >
             Text Input
           </button>
 
           <button
-            className={activeTab === "link" ? "active" : ""}
+            className={`verify-tab ${activeTab === "link" ? "active" : ""}`}
             onClick={() => setActiveTab("link")}
+            role="tab"
+            aria-selected={activeTab === "link"}
+            aria-controls="link-panel"
           >
             Paste Link
           </button>
@@ -176,35 +179,40 @@ export default function VerifyNewsPage() {
 
         {/* CONTENT AREA */}
         <div className="verify-input-area">
-
           {/* TEXT INPUT TAB */}
           {activeTab === "text" && (
-            <textarea
-              className="verify-textarea"
-              placeholder="Copy and paste news article..."
-              value={articleText}
-              onChange={(e) => setArticleText(e.target.value)}
-              maxLength={5000}
-            />
+            <div id="text-panel" role="tabpanel">
+              <textarea
+                className="verify-textarea"
+                placeholder="Copy and paste news article..."
+                value={articleText}
+                onChange={(e) => setArticleText(e.target.value)}
+                maxLength={5000}
+                aria-label="News article text input"
+              />
+            </div>
           )}
 
           {/* LINK INPUT TAB */}
           {activeTab === "link" && (
-            <input
-              className="verify-input"
-              placeholder="Paste article or claim link..."
-              value={pasteLink}
-              onChange={(e) => setPasteLink(e.target.value)}
-            />
+            <div id="link-panel" role="tabpanel">
+              <input
+                className="verify-input"
+                placeholder="Paste article or claim link..."
+                value={pasteLink}
+                onChange={(e) => setPasteLink(e.target.value)}
+                aria-label="Article link input"
+              />
+            </div>
           )}
 
           {/* FORM GRID */}
-          <div className="verify-grid">
-
+          <fieldset className="verify-grid">
             {/* CATEGORY */}
             <div className="verify-field">
-              <label>Category</label>
+              <label htmlFor="category-select">Category</label>
               <select
+                id="category-select"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -219,33 +227,50 @@ export default function VerifyNewsPage() {
 
             {/* FILE UPLOAD */}
             <div className="verify-field">
-              <label>Upload Document</label>
-
-              <label className="verify-upload-btn">
+              <label htmlFor="file-upload">Upload Document</label>
+              <label className="verify-upload-btn" htmlFor="file-upload">
                 {file ? file.name : "Upload PDF, DOCX"}
-                <input type="file" accept=".pdf,.doc,.docx" onChange={onFileUpload} />
               </label>
+              <input 
+                id="file-upload"
+                type="file" 
+                accept=".pdf,.doc,.docx" 
+                onChange={onFileUpload}
+                style={{ display: "none" }}
+                aria-label="Document upload"
+              />
             </div>
 
             {/* LOCATION */}
             <div className="verify-field-full">
-              <label>Location (optional)</label>
+              <label htmlFor="location-input">Location (optional)</label>
               <input
+                id="location-input"
                 className="verify-input"
                 placeholder="Select location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
+                aria-label="Location"
               />
             </div>
-          </div>
+          </fieldset>
         </div>
       </div>
 
       {/* ERROR MESSAGE */}
-      {error && <div className="verify-error">{error}</div>}
+      {error && (
+        <div className="verify-error" role="alert">
+          {error}
+        </div>
+      )}
 
       {/* VERIFY BUTTON */}
-      <button className="verify-btn" onClick={onSubmit} disabled={loading}>
+      <button 
+        className="verify-btn" 
+        onClick={onSubmit} 
+        disabled={loading}
+        aria-busy={loading}
+      >
         {loading ? "Analyzing..." : "🔍 Verify Now"}
       </button>
 
@@ -254,9 +279,11 @@ export default function VerifyNewsPage() {
 
       {/* RESULT DISPLAY */}
       {result && (
-        <div className="verify-result">
-          <div className="result-card">
-            <h2>Analysis Result</h2>
+        <section className="verify-result" aria-live="polite" aria-atomic="true">
+          <article className="result-card">
+            <header>
+              <h2>Analysis Result</h2>
+            </header>
             
             {/* MAIN PREDICTION SECTION */}
             <div className="result-main">
@@ -289,7 +316,7 @@ export default function VerifyNewsPage() {
 
             {/* FACTORS ANALYSIS */}
             {result.explanation && result.explanation.length > 0 && (
-              <div className="result-factors">
+              <section className="result-factors">
                 <h3>Contributing Factors Analysis</h3>
                 
                 <div className="factors-grid">
@@ -323,12 +350,12 @@ export default function VerifyNewsPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             )}
 
             {/* KEYWORDS SECTION */}
             {keywords.length > 0 && (
-              <div className="result-keywords">
+              <section className="result-keywords">
                 <div className="keywords-header">
                   <h3>🔍 Keywords Found & Frequency</h3>
                   <span className="keywords-count">Total: {keywords.length} keywords</span>
@@ -360,11 +387,11 @@ export default function VerifyNewsPage() {
                     );
                   })}
                 </div>
-              </div>
+              </section>
             )}
 
             {/* SUMMARY STATS */}
-            <div className="result-summary">
+            <footer className="result-summary">
               <div className="summary-item">
                 <span className="summary-icon">📝</span>
                 <span className="summary-label">Text Length:</span>
@@ -394,8 +421,22 @@ export default function VerifyNewsPage() {
             </button>
           </div>
         </div>
-      )}
+              )}
+            </footer>
 
+            <button
+              className="verify-btn-secondary"
+              onClick={() => {
+                setResult(null);
+                setArticleText("");
+                setPasteLink("");
+              }}
+            >
+              Analyze Another
+            </button>
+          </article>
+        </section>
+      )}
     </div>
   );
 }
