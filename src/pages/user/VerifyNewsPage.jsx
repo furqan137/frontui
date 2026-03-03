@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import "./styles/VerifyNewsPage.css";
 import { useNavigate } from "react-router-dom";
 
 // Extract keywords from text
@@ -147,66 +146,89 @@ export default function VerifyNewsPage() {
   };
 
   return (
-    <div className="verify-container">
-
-      {/* PAGE TITLE */}
-      <h1 className="verify-title">Submit News for Verification</h1>
-      <p className="verify-subtitle">
-        Submit articles, claims, or links to verify authenticity.
-      </p>
-
-      <div className="verify-card">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 py-8 px-4">
+      <div className="max-w-5xl mx-auto">
         
-        {/* TABS */}
-        <div className="verify-tabs">
-          <button
-            className={activeTab === "text" ? "active" : ""}
-            onClick={() => setActiveTab("text")}
-          >
-            Text Input
-          </button>
-
-          <button
-            className={activeTab === "link" ? "active" : ""}
-            onClick={() => setActiveTab("link")}
-          >
-            Paste Link
-          </button>
+        {/* Header */}
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-3">
+            Submit News for Verification
+          </h1>
+          <p className="text-slate-600 dark:text-slate-300 text-lg">
+            Verify articles, claims, or links to detect potential misinformation
+          </p>
         </div>
 
-        {/* CONTENT AREA */}
-        <div className="verify-input-area">
+        {/* Main Card */}
+        <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 rounded-2xl border border-white/20 dark:border-slate-700/30 shadow-xl p-8 mb-8">
+          
+          {/* Tabs */}
+          <div className="flex gap-4 mb-8 border-b border-slate-200 dark:border-slate-700">
+            <button
+              onClick={() => setActiveTab("text")}
+              className={`px-6 py-3 font-semibold rounded-t-xl transition ${
+                activeTab === "text"
+                  ? "text-white bg-gradient-to-r from-blue-600 to-cyan-600"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
+            >
+              📝 Text Input
+            </button>
+            <button
+              onClick={() => setActiveTab("link")}
+              className={`px-6 py-3 font-semibold rounded-t-xl transition ${
+                activeTab === "link"
+                  ? "text-white bg-gradient-to-r from-blue-600 to-cyan-600"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
+            >
+              🔗 Paste Link
+            </button>
+          </div>
 
-          {/* TEXT INPUT TAB */}
-          {activeTab === "text" && (
-            <textarea
-              className="verify-textarea"
-              placeholder="Copy and paste news article..."
-              value={articleText}
-              onChange={(e) => setArticleText(e.target.value)}
-              maxLength={5000}
-            />
-          )}
+          {/* Input Section */}
+          <div className="mb-8">
+            {activeTab === "text" && (
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+                  Article Text
+                </label>
+                <textarea
+                  placeholder="Copy and paste news article..."
+                  value={articleText}
+                  onChange={(e) => setArticleText(e.target.value)}
+                  maxLength={5000}
+                  className="w-full h-48 p-4 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                />
+              </div>
+            )}
 
-          {/* LINK INPUT TAB */}
-          {activeTab === "link" && (
-            <input
-              className="verify-input"
-              placeholder="Paste article or claim link..."
-              value={pasteLink}
-              onChange={(e) => setPasteLink(e.target.value)}
-            />
-          )}
+            {activeTab === "link" && (
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+                  Article URL
+                </label>
+                <input
+                  placeholder="Paste article or claim link (https://...)..."
+                  value={pasteLink}
+                  onChange={(e) => setPasteLink(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                />
+              </div>
+            )}
+          </div>
 
-          {/* FORM GRID */}
-          <div className="verify-grid">
-
-            {/* CATEGORY */}
-            <div className="verify-field">
-              <label>Category</label>
+          {/* Form Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {/* Category */}
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+                📂 Category
+              </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
               >
                 <option>Politics</option>
                 <option>Health</option>
@@ -217,144 +239,222 @@ export default function VerifyNewsPage() {
               </select>
             </div>
 
-            {/* FILE UPLOAD */}
-            <div className="verify-field">
-              <label>Upload Document</label>
-
-              <label className="verify-upload-btn">
-                {file ? file.name : "Upload PDF, DOCX"}
-                <input type="file" accept=".pdf,.doc,.docx" onChange={onFileUpload} />
+            {/* File Upload */}
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+                📄 Document
+              </label>
+              <label className="flex items-center justify-center w-full px-4 py-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/20 cursor-pointer transition">
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-400 truncate">
+                  {file ? file.name : "Upload PDF, DOCX"}
+                </span>
+                <input type="file" accept=".pdf,.doc,.docx" onChange={onFileUpload} className="hidden" />
               </label>
             </div>
 
-            {/* LOCATION */}
-            <div className="verify-field-full">
-              <label>Location (optional)</label>
+            {/* Location */}
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-3">
+                📍 Location
+              </label>
               <input
-                className="verify-input"
-                placeholder="Select location"
+                placeholder="Country or Region"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
               />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* ERROR MESSAGE */}
-      {error && <div className="verify-error">{error}</div>}
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 flex gap-3">
+            <span className="text-2xl">⚠️</span>
+            <div>
+              <p className="font-semibold text-red-900 dark:text-red-200">Error</p>
+              <p className="text-red-700 dark:text-red-300 text-sm">{error}</p>
+            </div>
+          </div>
+        )}
 
-      {/* VERIFY BUTTON */}
-      <button className="verify-btn" onClick={onSubmit} disabled={loading}>
-        {loading ? "Analyzing..." : "🔍 Verify Now"}
-      </button>
+        {/* Verify Button */}
+        <button
+          onClick={onSubmit}
+          disabled={loading}
+          className="w-full px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:from-slate-400 disabled:to-slate-400 disabled:cursor-not-allowed transition shadow-lg hover:shadow-xl mb-6"
+        >
+          {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              Analyzing Content...
+            </span>
+          ) : (
+            '🔍 Verify Now'
+          )}
+        </button>
 
-      {/* LOADING INDICATOR */}
-      {loading && <p className="verify-loading">⏳ Analyzing content...</p>}
-
-      {/* RESULT DISPLAY */}
-      {result && (
-        <div className="verify-result">
-          <div className="result-card">
-            <h2>Analysis Result</h2>
+        {/* Results */}
+        {result && (
+          <div className="space-y-6">
             
-            {/* MAIN PREDICTION SECTION */}
-            <div className="result-main">
-              <div className="result-prediction">
-                <span className="result-label">Prediction:</span>
-                <span className={`result-value ${result.prediction.toLowerCase()}`}>
-                  {result.prediction}
+            {/* Main Result Card */}
+            <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 rounded-2xl border border-white/20 dark:border-slate-700/30 shadow-xl p-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Analysis Result</h2>
+                <span className="text-4xl">
+                  {result.prediction === 'Fake' ? '🚨' : '✓'}
                 </span>
-                <span className="result-accuracy">Accuracy: {result.confidence}%</span>
               </div>
 
-              {/* PROBABILITY COMPARISON */}
-              <div className="probability-comparison">
-                <div className="prob-item prob-real">
-                  <div className="prob-label">Real Probability</div>
-                  <div className="prob-bar">
-                    <div className="prob-fill-real" style={{ width: `${parseFloat(result.real_probability)}%` }}></div>
-                  </div>
-                  <div className="prob-value">{result.real_probability}%</div>
+              {/* Prediction */}
+              <div className="mb-8">
+                <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">Classification</p>
+                <div className={`inline-block px-6 py-3 rounded-xl font-bold text-2xl ${
+                  result.prediction === 'Fake'
+                    ? 'bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-300'
+                    : 'bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300'
+                }`}>
+                  {result.prediction}
                 </div>
-                <div className="prob-item prob-fake">
-                  <div className="prob-label">Fake Probability</div>
-                  <div className="prob-bar">
-                    <div className="prob-fill-fake" style={{ width: `${parseFloat(result.fake_probability)}%` }}></div>
+              </div>
+
+              {/* Probability Bars */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Real Probability</label>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                      {result.realProb ? (result.realProb * 100).toFixed(1) : '0'}%
+                    </span>
                   </div>
-                  <div className="prob-value">{result.fake_probability}%</div>
+                  <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 transition-all duration-1000"
+                      style={{ width: `${result.realProb ? result.realProb * 100 : 0}%` }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Fake Probability</label>
+                    <span className="font-bold text-red-600 dark:text-red-400">
+                      {result.fakeProb ? (result.fakeProb * 100).toFixed(1) : '0'}%
+                    </span>
+                  </div>
+                  <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-red-500 to-red-600 transition-all duration-1000"
+                      style={{ width: `${result.fakeProb ? result.fakeProb * 100 : 0}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Confidence */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Overall Confidence</label>
+                  <span className="font-bold text-slate-900 dark:text-white text-lg">
+                    {result.confidence ? (result.confidence * 100).toFixed(1) : '0'}%
+                  </span>
+                </div>
+                <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-cyan-600 transition-all duration-1000"
+                    style={{ width: `${result.confidence ? result.confidence * 100 : 0}%` }}
+                  ></div>
                 </div>
               </div>
             </div>
 
-            {/* FACTORS ANALYSIS */}
+            {/* Factors Analysis */}
             {result.explanation && result.explanation.length > 0 && (
-              <div className="result-factors">
-                <h3>Contributing Factors Analysis</h3>
+              <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 rounded-2xl border border-white/20 dark:border-slate-700/30 shadow-xl p-8">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Contributing Factors</h3>
                 
-                <div className="factors-grid">
-                  {/* FACTORS SUPPORTING FAKE */}
-                  <div className="factors-section fake-factors">
-                    <h4>🚨 Indicators of Fake News</h4>
-                    <div className="factors-list">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Fake Indicators */}
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2">
+                      🚨 Indicators of Fake
+                    </h4>
+                    <div className="space-y-2">
                       {result.explanation
-                        .filter(f => f.factor_type === 'Indicates Fake')
+                        .filter(f => f.weight < 0 || f.factor_type === 'Indicates Fake')
                         .map((factor, idx) => (
-                          <div key={idx} className="factor-item fake-item">
-                            <div className="factor-name">{factor.name}</div>
-                            <div className="factor-score">{factor.weight.toFixed(4)}</div>
+                          <div key={idx} className="p-3 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800">
+                            <p className="text-sm font-medium text-slate-900 dark:text-white">{factor.name}</p>
+                            <p className="text-xs text-red-600 dark:text-red-400 font-bold mt-1">
+                              Weight: {factor.weight.toFixed(4)}
+                            </p>
                           </div>
                         ))}
+                      {result.explanation.filter(f => f.weight < 0 || f.factor_type === 'Indicates Fake').length === 0 && (
+                        <p className="text-sm text-slate-600 dark:text-slate-400">No fake indicators found</p>
+                      )}
                     </div>
                   </div>
 
-                  {/* FACTORS SUPPORTING REAL */}
-                  <div className="factors-section real-factors">
-                    <h4>✓ Indicators of Real News</h4>
-                    <div className="factors-list">
+                  {/* Real Indicators */}
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+                      ✓ Indicators of Real
+                    </h4>
+                    <div className="space-y-2">
                       {result.explanation
-                        .filter(f => f.factor_type === 'Indicates Real')
+                        .filter(f => f.weight > 0 || f.factor_type === 'Indicates Real')
                         .map((factor, idx) => (
-                          <div key={idx} className="factor-item real-item">
-                            <div className="factor-name">{factor.name}</div>
-                            <div className="factor-score">{factor.weight.toFixed(4)}</div>
+                          <div key={idx} className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+                            <p className="text-sm font-medium text-slate-900 dark:text-white">{factor.name}</p>
+                            <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold mt-1">
+                              Weight: {factor.weight.toFixed(4)}
+                            </p>
                           </div>
                         ))}
+                      {result.explanation.filter(f => f.weight > 0 || f.factor_type === 'Indicates Real').length === 0 && (
+                        <p className="text-sm text-slate-600 dark:text-slate-400">No real indicators found</p>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* KEYWORDS SECTION */}
+            {/* Keywords */}
             {keywords.length > 0 && (
-              <div className="result-keywords">
-                <div className="keywords-header">
-                  <h3>🔍 Keywords Found & Frequency</h3>
-                  <span className="keywords-count">Total: {keywords.length} keywords</span>
-                </div>
+              <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 rounded-2xl border border-white/20 dark:border-slate-700/30 shadow-xl p-8">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">🔍 Keyword Frequency Analysis</h3>
                 
-                {/* KEYWORDS BAR CHART */}
-                <div className="keywords-chart">
+                <div className="space-y-4">
                   {keywords.map((keyword, idx) => {
                     const maxCount = Math.max(...keywords.map(k => k.count));
                     const percentage = (keyword.count / maxCount) * 100;
-                    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
-                    const color = colors[idx % colors.length];
+                    const colors = [
+                      'from-blue-500 to-blue-600',
+                      'from-cyan-500 to-cyan-600',
+                      'from-teal-500 to-teal-600',
+                      'from-emerald-500 to-emerald-600',
+                      'from-violet-500 to-violet-600',
+                      'from-pink-500 to-pink-600',
+                      'from-orange-500 to-orange-600',
+                      'from-amber-500 to-amber-600',
+                    ];
+                    const colorClass = colors[idx % colors.length];
                     return (
-                      <div key={idx} className="keyword-bar-item">
-                        <div className="keyword-label">{keyword.name}</div>
-                        <div className="keyword-bar-container">
-                          <div 
-                            className="keyword-bar-fill" 
-                            style={{
-                              width: `${percentage}%`,
-                              backgroundColor: color,
-                              transition: 'width 0.6s ease'
-                            }}
-                          >
-                            <span className="keyword-bar-value">{keyword.count}</span>
-                          </div>
+                      <div key={idx}>
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-semibold text-slate-900 dark:text-white">{keyword.name}</span>
+                          <span className="text-sm font-bold text-slate-600 dark:text-slate-400">
+                            {keyword.count} occurrences
+                          </span>
+                        </div>
+                        <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full bg-gradient-to-r ${colorClass} transition-all duration-1000`}
+                            style={{ width: `${percentage}%` }}
+                          ></div>
                         </div>
                       </div>
                     );
@@ -363,39 +463,41 @@ export default function VerifyNewsPage() {
               </div>
             )}
 
-            {/* SUMMARY STATS */}
-            <div className="result-summary">
-              <div className="summary-item">
-                <span className="summary-icon">📝</span>
-                <span className="summary-label">Text Length:</span>
-                <span className="summary-value">{(articleText || pasteLink).length} characters</span>
+            {/* Summary Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 rounded-2xl border border-white/20 dark:border-slate-700/30 shadow-xl p-8">
+              <div className="text-center">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">📝 Text Length</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {(articleText || pasteLink).length}
+                </p>
+                <p className="text-xs text-slate-500 dark:text-slate-500">characters</p>
               </div>
-              <div className="summary-item">
-                <span className="summary-icon">🎯</span>
-                <span className="summary-label">Category:</span>
-                <span className="summary-value">{category}</span>
+              <div className="text-center">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">🎯 Category</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">{category}</p>
               </div>
-              <div className="summary-item">
-                <span className="summary-icon">📍</span>
-                <span className="summary-label">Location:</span>
-                <span className="summary-value">{location || "Not specified"}</span>
+              <div className="text-center">
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">📍 Location</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {location || "N/A"}
+                </p>
               </div>
             </div>
 
+            {/* Analyze Another Button */}
             <button
-              className="verify-btn-secondary"
               onClick={() => {
                 setResult(null);
                 setArticleText("");
                 setPasteLink("");
               }}
+              className="w-full px-8 py-4 rounded-xl font-bold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition"
             >
-              Analyze Another
+              ↻ Analyze Another Article
             </button>
           </div>
-        </div>
-      )}
-
+        )}
+      </div>
     </div>
   );
 }

@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedUserRoute, ProtectedAdminRoute, ProtectedGuestRoute } from "./routes/ProtectedRoutes";
 
-import "./App.css";
-
 /* PUBLIC */
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
